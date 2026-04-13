@@ -1,0 +1,95 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+
+
+.container{
+    width: 1440px;
+    max-width: 1200px;
+    margin: auto;
+}
+#header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 80px;
+  background: #e3e6f3;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+  z-index:999 ;
+  position: sticky;
+  top: 0;
+  left: 0;
+}
+ button{
+    background-color: orangered;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin: none;
+    border: none;
+    cursor: pointer;
+
+}
+#navbar{
+    display: flex;
+    align-self: center;
+    justify-content: space-between;
+    font-family: arial;
+}
+#navbar li{
+    list-style: none;
+    padding: 0 7px;
+    position: relative;
+}
+#navbar li a{
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+    color: brown;
+    transition: 0.3 ease;
+}
+#navbar li a:hover,
+#navbar li a:active{
+    color: black;
+}
+#navbar li a:active::after,
+#navbar li a:hover::after{
+    content:"";
+    width: 30%;
+    height: 2px;
+    background-color:black ;
+    position: absolute;
+    bottom: -4px;
+    left: 20px;
+}
+
+#hero{
+    background-image: url(picture/logo.jpeg);
+    height: 90vh;
+    width: 100%;
+    background-size: cover;
+    background-position: top 25% right 0;
+    padding: 0 100px;
+    flex-direction:column;
+    align-items: flex-start;
+    justify-content: center;
+}
+#hero h4{
+    padding-bottom: 25px;
+    padding-top: 100px;
+    color: orangered;
+    font-weight: 600px;
+    
+}
+
+#hero h2{
+    font-size: 50px;
+}
+
+#hero.name{
+    display: block;
+    margin-top: 10px;
+}
+
+

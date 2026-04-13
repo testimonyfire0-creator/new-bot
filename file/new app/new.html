@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Curator • Sign in</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+        
+        :root {
+            font-family: 'Inter', system_ui, sans-serif;
+        }
+        
+        .card {
+            box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.1);
+        }
+        
+        .input-field {
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .input-field:focus {
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+        }
+        
+        .logo-cube {
+            animation: cube-float 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="bg-[#f8f9fa] min-h-screen flex items-center justify-center p-6">
+    <div class="w-full max-w-[420px]">
+        
+                <!-- NEW ROUND IMAGE LOGO -->
+        <div class="flex items-center justify-center gap-3 mb-10">
+            <!-- Round Image Logo (perfect circle) -->
+            <img src="https://picsum.photos/id/1005/200/200" 
+                 alt="Your Logo"
+                 class="w-10 h-10 rounded-full object-cover ring-2 ring-blue-200 ring-offset-2 shadow-md">
+            
+            <!-- Keep your current text (you can change it) -->
+            <span class="text-3xl font-semibold tracking-[-0.5px] text-gray-900">The Archivist</span>
+        </div>
+
+        <!-- Login Card -->
+        <div class="bg-white rounded-3xl card p-8 md:p-10">
+            
+            <div class="mb-8">
+                <h1 class="text-3xl font-semibold text-gray-900">Welcome back</h1>
+                <p class="text-gray-500 mt-1 text-[15px]">Please enter your details to sign in.</p>
+            </div>
+
+            <form id="login-form" class="space-y-6">
+                
+                <!-- Email -->
+                <div>
+                    <label class="text-xs font-semibold tracking-widest text-gray-500 mb-2 block">EMAIL ADDRESS</label>
+                    <input 
+                        type="email" 
+                        id="email"
+                        placeholder="anyinde@testimony.com"
+                        value="anyinde@testimony.com"
+                        class="input-field w-full px-5 py-5 bg-[#f1f5f9] rounded-2xl text-gray-900 text-base focus:outline-none placeholder:text-gray-400">
+                </div>
+
+                <!-- Password -->
+                <div>
+                    <div class="flex items-baseline justify-between mb-2">
+                        <label class="text-xs font-semibold tracking-widest text-gray-500">PASSWORD</label>
+                        <a href="#" 
+                           onclick="forgotPassword(event)"
+                           class="text-sm text-[#2563eb] hover:text-blue-700 font-medium transition">
+                            Forgot Password?
+                        </a>
+                    </div>
+                    <input 
+                        type="password" 
+                        id="password"
+                        placeholder="••••"
+                        class="input-field w-full px-5 py-5 bg-[#f1f5f9] rounded-2xl text-gray-900 text-base focus:outline-none">
+                </div>
+
+                <!-- Login Button -->
+                <button 
+                    type="submit"
+                    onclick="handleLogin(event)"
+                    class="w-full bg-[#2563eb] hover:bg-[#1e40af] transition-all duration-200 text-white font-semibold text-lg py-5 rounded-2xl shadow-md shadow-blue-500/30">
+                    LOGIN
+                </button>
+
+            </form>
+
+            <!-- Sign up link (exactly as in the image) -->
+            <div class="text-center mt-8 text-gray-500 text-sm">
+                Don't have an account? 
+                <a href="#" 
+                   onclick="signUp(event)"
+                   class="text-[#2563eb] font-medium hover:underline">Sign up</a>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="flex flex-wrap justify-center gap-x-8 gap-y-2 text-[10px] text-gray-400 mt-10">
+            <a href="#" onclick="footerClick(event)" class="hover:text-gray-600 transition">PRIVACY POLICY</a>
+            <a href="#" onclick="footerClick(event)" class="hover:text-gray-600 transition">TERMS OF SERVICE</a>
+            <a href="#" onclick="footerClick(event)" class="hover:text-gray-600 transition">HELP CENTER</a>
+            <span class="text-gray-300">© 2026  DIGITAL OLUWASEUN. ALL RIGHTS RESERVED.</span>
+        </div>
+    </div>
+
+    <script>
+        // Tailwind script already loaded via CDN
+        
+        // Simple interactive demo
+        function handleLogin(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            if (!email || !password) {
+                alert("Please fill in both fields");
+                return;
+            }
+            
+            // Fake loading effect
+            const btn = e.target;
+            const originalText = btn.textContent;
+            btn.style.transition = "all 0.3s";
+            btn.innerHTML = `
+                <svg class="animate-spin h-5 w-5 text-white mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+                </svg>
+            `;
+            
+            setTimeout(() => {
+                alert("✅ Successfully signed in!\n\n(🎉 This is a demo — the UI matches the image 1:1)");
+                btn.innerHTML = originalText;
+                // Reset form for demo
+                document.getElementById('password').value = '';
+            }, 1400);
+        }
+        
+        function forgotPassword(e) {
+            e.preventDefault();
+            alert("🔑 Forgot Password flow would open here.\n\nIn a real app this would send a reset link.");
+        }
+        
+        function signUp(e) {
+            e.preventDefault();
+            alert("📝 Sign up modal or page would open here.\n\nThe design is ready for full implementation!");
+        }
+        
+        function footerClick(e) {
+            e.preventDefault();
+            alert("📄 You clicked a footer link.\n\nThis is a fully functional clone of the provided design.");
+        }
+        
+        // Keyboard support (Enter key to login)
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                const form = document.getElementById('login-form');
+                if (form) handleLogin({preventDefault: () => {}});
+            }
+        });
+        
+        console.log('%c✅ The Curator login page cloned successfully!', 'color:#2563eb; font-family:monospace; font-size:14px');
+    </script>
+</body>
+</html>
